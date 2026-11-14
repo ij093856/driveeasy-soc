@@ -1,0 +1,2 @@
+{"search_name": "SSH Brute Force Detected",
+ "result": {"_time": "2026-11-16T10:42:00", "src_ip": "10.0.2.2", "attempts": "87"}}
