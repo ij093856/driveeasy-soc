@@ -122,3 +122,15 @@ Fewer than 10 attempts does not trigger the alert, so it gets no ticket.
 4. Update the ticket in `tickets.csv`: set the status to **Contained** and note the time, the IP blocked, and the action taken.
 **Containment is complete when:** the deny rule is active, no sessions remain from the attacker's IP (`who -u`), and the evidence copy is saved.
 
+**Goal:** Make sure the attacker has no remaining access and the server is back to its hardened baseline.
+
+### A. Always: verify the hardened baseline
+
+1. Check the live SSH settings:
+   ```bash
+   sudo sshd -T | grep -Ei "permitrootlogin|passwordauthentication|pubkeyauthentication|maxauthtries|allowusers|x11forwarding"
+   ```
+2. Expected values: (write the six values here, from your output)
+3. If any value is different, restore it in `/etc/ssh/sshd_config`, then run `sudo sshd -t` to test the syntax, then `sudo systemctl restart ssh`.
+
+**Eradication is complete when:** SSH settings match the baseline, no unknown keys, users or jobs exist, no unexpected ports are open, and the attacker's key or access has been removed.
