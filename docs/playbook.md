@@ -134,3 +134,11 @@ Fewer than 10 attempts does not trigger the alert, so it gets no ticket.
 3. If any value is different, restore it in `/etc/ssh/sshd_config`, then run `sudo sshd -t` to test the syntax, then `sudo systemctl restart ssh`.
 
 **Eradication is complete when:** SSH settings match the baseline, no unknown keys, users or jobs exist, no unexpected ports are open, and the attacker's key or access has been removed.
+## 5. Recovery
+
+**Goal:** Return the server to normal operation and confirm the attacker has not come back.
+## 6. Lessons learned
+
+### What worked
+### What didn't / what surprised me
+### What I would improve
