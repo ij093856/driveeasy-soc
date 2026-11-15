@@ -1,1 +1,7 @@
 index=linux_auth "Failed password" | rex "from (?<src_ip>\d{1,3}(?:\.\d{1,3}){3})" | search src_ip="10.0.2.15" | sort 0 _time | streamstats time_window=2m count as failed_attempts by src_ip 
+index=linux_auth ("Invalid user" OR "drop connection")
+| regex _raw="(Invalid user \S+ from|drop connection #\d+ from)"
+| rex "(?<src_ip>\d{1,3}(?:\.\d{1,3}){3})"
+| bin _time span=5m
+| stats count AS attempts BY _time src_ip
+| where attempts >= 10
