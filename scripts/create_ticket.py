@@ -58,6 +58,6 @@ def main():
     print(f"Ticket created: {src_ip} | {severity} | {attempts} attempts")
 
 
-main()"
+main()
 
 
