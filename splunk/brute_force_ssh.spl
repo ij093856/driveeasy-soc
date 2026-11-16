@@ -1,5 +1,8 @@
 index=linux_auth source="/var/log/auth.log" ("Invalid user" OR "authenticating user" OR "Failed password" OR "not allowed because not listed in AllowUsers")
 | rex "(?<src_ip>\d{1,3}(?:\.\d{1,3}){3}) port \d+"
-| bin _time span=5m
-| stats count AS attempts BY _time src_ip
-| where attempts >= 10
+| where isnotnull(src_ip)
+| transaction src_ip maxpause=30s
+| where eventcount >= 10
+| eval attempts=eventcount
+| eval last_attempt=strftime(_time+duration, "%Y-%m-%d %H:%M:%S")
+| table _time src_ip attempts last_attempt duration
