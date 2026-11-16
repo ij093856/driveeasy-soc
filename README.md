@@ -14,7 +14,7 @@ Incident response playbook, automated ticket creation and final security report 
 | Splunk detection rule (SPL) | [`splunk/brute_force_ssh.spl`](splunk/brute_force_ssh.spl) |
 | Ticket creation script | [`scripts/create_ticket.py`](scripts/create_ticket.py) |
 | Splunk export script | [`scripts/export_alert.sh`](scripts/export_alert.sh) |
-| Demo video (unlisted, about 2 min) | https://youtu.be/ap3mHOtiZAA |
+| **Demo video** (unlisted, about 2 min) | https://youtu.be/ap3mHOtiZAA |
 | Hardening evidence (Task 1) | Task 1 repository `driveeasy-hardening` |
 
 ## How it works
